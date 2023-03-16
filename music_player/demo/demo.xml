@@ -1,36 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record model="music_player.music_player" id="song1">
-    <field name="name">Akon-Be-With-You</field>
-    <field name="filename">Akon-Be-With-You.mp3</field>
-  </record>
-  <record model="music_player.music_player" id="song2">
-    <field name="name">Akon-Beautiful</field>
-    <field name="filename">Akon-Beautiful.mp3</field>
-  </record>
-  <record model="music_player.music_player" id="song3">
-    <field name="name">Akon-Birthmark</field>
-    <field name="filename">Akon-Birthmark.mp3</field>
-  </record>
-  <record model="music_player.music_player" id="song4">
-    <field name="name">Akon-Keep-You-Much-Longer</field>
-    <field name="filename">Akon-Keep-You-Much-Longer.mp3</field>
-  </record>
-  <record model="music_player.music_player" id="song5">
-    <field name="name">Akon-Sunny-Day</field>
-    <field name="filename">Akon-Sunny-Day.mp3</field>
-  </record>
+    <data>
+    
+          <record model="music_player.music_player" id="song1">
+            <field name="name">Akon-Be-With-You</field>
+            <field name="filename">Akon-Be-With-You.mp3</field>
+          </record>
+          <record model="music_player.music_player" id="song2">
+            <field name="name">Akon-Beautiful</field>
+            <field name="filename">Akon-Beautiful.mp3</field>
+          </record>
+          <record model="music_player.music_player" id="song3">
+            <field name="name">Akon-Birthmark</field>
+            <field name="filename">Akon-Birthmark.mp3</field>
+          </record>
+          <record model="music_player.music_player" id="song4">
+            <field name="name">Akon-Keep-You-Much-Longer</field>
+            <field name="filename">Akon-Keep-You-Much-Longer.mp3</field>
+          </record>
+          <record id="song5" model="music_player.music_player">
+            <field name="name">Temp-song-1</field>
+            <field name="filename">Temp-song-1.mp3</field>
+          </record>
+          <record id="song6" model="music_player.music_player">
+            <field name="name">Temp-song-2</field>
+            <field name="filename">Temp-song-2.mp3</field>
+          </record>
+          <record id="song7" model="music_player.music_player">
+            <field name="name">Temp-song-3</field>
+            <field name="filename">Temp-song-3.mp3</field>
+          </record>
 
-  <record model="music_player.music_player" id="song6">
-      <field name="name">Temp-song-1</field>
-      <field name="filename">Temp-song-1.mp3</field>
-    </record>
-    <record model="music_player.music_player" id="song7">
-      <field name="name">Temp-song-2</field>
-      <field name="filename">Temp-song-2.mp3</field>
-    </record>
-    <record model="music_player.music_player" id="song8">
-      <field name="name">Temp-song-3</field>
-      <field name="filename">Temp-song-3.mp3</field>
-    </record>
+    </data>
 </odoo>

@@ -9,6 +9,7 @@
     'description': """
         Long description of module's purpose
     """,
+    'license': 'LGPL-3',
 
     'author': "My Company",
     'website': "https://www.yourcompany.com",
@@ -28,10 +29,15 @@
         'views/views.xml',
         'views/templates.xml',
     ],
+    'assets':{
+    'web.assets_backend':[
+    'music_player/app.js',
+    ]
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-    'installable': True,
-    'application': True,
+    'installable':True,
+    'application':True,
 }

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "musicPlayer",
+    'name': "musicplayer",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -28,10 +28,15 @@
         'views/views.xml',
         'views/templates.xml',
     ],
+    'assets':{
+    'web.assets_backend':[
+        'musicplayer/app.js'
+    ]
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-    'installable': True,
-    'application': True,
+    'installable':True,
+    'application':True
 }

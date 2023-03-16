@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record model="musicplayer.musicplayer" id="song1">
+    <field name="name">Akon-Be-With-You</field>
+    <field name="filename">Akon-Be-With-You.mp3</field>
+  </record>
+  <record model="musicplayer.musicplayer" id="song2">
+    <field name="name">Akon-Beautiful</field>
+    <field name="filename">Akon-Beautiful.mp3</field>
+  </record>
+  <record model="musicplayer.musicplayer" id="song3">
+    <field name="name">Akon-Birthmark</field>
+    <field name="filename">Akon-Birthmark.mp3</field>
+  </record>
+  <record model="musicplayer.musicplayer" id="song4">
+    <field name="name">Akon-Keep-You-Much-Longer</field>
+    <field name="filename">Akon-Keep-You-Much-Longer.mp3</field>
+  </record>
+  <record model="musicplayer.musicplayer" id="song5">
+    <field name="name">Akon-Sunny-Day</field>
+    <field name="filename">Akon-Sunny-Day.mp3</field>
+  </record>
+</odoo>

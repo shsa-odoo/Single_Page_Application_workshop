@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "musicPlayer",
+    'name': "MusicPlayer",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -32,6 +32,6 @@
     'demo': [
         'demo/demo.xml',
     ],
-    'installable': True,
-    'application': True,
+    'application':True,
+    'installable':True,
 }

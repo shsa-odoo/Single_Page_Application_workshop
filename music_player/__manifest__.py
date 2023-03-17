@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "musicPlayer",
+    'name': "MusicPlayer",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary': " ",
+    'License':'LGPL-3',
 
     'description': """
         Long description of module's purpose
@@ -28,10 +27,15 @@
         'views/views.xml',
         'views/templates.xml',
     ],
+    'assets':{
+    'web.assets_backend':[
+        'music_player/static/app.js'
+        ],
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-    'installable': True,
-    'application': True,
+    'installable':True,
+    'application':True,
 }

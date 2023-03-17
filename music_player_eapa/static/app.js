@@ -41,20 +41,39 @@ class Playlist extends Component{
     <div style="float:right; margin-top: 100px;">
         <t t-if="props.playlist">
         <h2>Playlist</h2>
-            <t t-foreach="props.playlist" t-as="song" t-key="song.id">
-                <p><t t-out="song.name"/></p>
-                <button t-att-value="song.url" t-on-click="removeSongFromPlaylist">Remove song</button>
-                <button t-att-value="song.url" t-on-click="playSong">Play Song</button>
-            </t>
+        <t t-foreach="props.playlist" t-as="song" t-key="song.id">
+            <p><t t-out="song.name"/></p>
+            <button t-att-value="song.url" t-on-click="removeSongFromPlaylist">Remove song</button>
+            <button t-att-value="song.url" t-on-click="playSong">Play Song</button>
+        </t>
         </t>
     </div>
     `;
 
+    removeSongFromPlaylist(ev){
+        if(audio){
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        const selectedUrl = ev.target.value;
+        console.log(selectedUrl)
+        const selectedVoice = this.props.playlist.findIndex(song => song.url === selectedUrl);
+        console.log(selectedVoice)
+        this.props.playlist.splice(selectedVoice, 1)
+        console.log(ev.target.value)
+    }
+
     playSong(ev){
-        const selectedSongUrl = ev.target.getAttribute('value');
-        const selectedSong = this.props.searchData[0].find(song => song.url === selectedSongUrl);
-        document.getElementById('song-title').textContent = selectedSong.name;
-        audio = new Audio(selectedSongUrl);
+        if(audio){
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        const selectedAudioUrl = ev.target.getAttribute('value');
+        const selectedAudio = this.props.playlist.find(song => song.url === selectedAudioUrl);
+        document.getElementById('song-title').textContent = selectedAudio.name;
+        audio = new Audio(selectedAudioUrl);
+        audio.pause();
+        audio.currentTime = 0;
         audio.play();
     }
     
@@ -84,7 +103,10 @@ class Musiclist extends Component{
     addSongToPlaylist(ev){
         const selectedMusicUrl = ev.target.getAttribute('value');
         const selectedMusic = this.props.searchData[0].find(song => song.url === selectedMusicUrl);
-        console.log(selectedMusic)
+        if (this.playlist.includes(selectedMusic)) {
+            return;
+        }
+        // console.log(selectedMusic)
         this.playlist.push(selectedMusic)
     } 
 

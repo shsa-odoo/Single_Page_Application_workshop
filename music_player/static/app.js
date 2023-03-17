@@ -2,39 +2,9 @@
 const {Component,xml,mount,useState} =owl;
 
 let audio=""
-
-class Playlist extends Component{
-    static template = xml`
-    <div style="position:absolute;right:5px">
-    <h2>Playlist</h2>
-    <t t-if="props.playData">
-    <div>
-    <t t-foreach="props.playData" t-as="song" t-key="song.id">
-    <p><t t-out="song.name"/></p>
-    <button id="play-btn" t-on-click="playThisSong">Play</button>
-    
-    </t>
-    </div>
-    </t>
-    </div>
-    `;
-    playThisSong() {
-        if (!audio) {
-            return;
-        }
-        console.log("p")
-        audio.play();
-    }
-
-// }
-//     static template=xml`<div id="Playlist" style="float:right">
-//                 <t t-esc="props.playData"/>
-//     </div>`;
-    static props=['playData']
-}
 class Player extends Component{
     static template=xml`
-    <div style="">
+    <div style="position:absolute;left:45%;">
     <h2 id="song-title"></h2>
     <div>
     <button id="pause-button" t-on-click="pauseThisSong">Pause</button>
@@ -47,6 +17,7 @@ class Player extends Component{
             if (!audio) {
             return;
             }
+        // audio.pause();
             audio.play();
         }
         pauseThisSong() {
@@ -65,6 +36,61 @@ class Player extends Component{
 
 
 }
+
+class Playlist extends Component{
+    static template = xml`
+    <div style="position:absolute;right:5px">
+    <t t-if="props.playData">
+    <t t-if="props.playData[0] and props.playData[0] !== ''">
+    <div>
+    <h2>Playlist</h2>
+    <t t-foreach="props.playData" t-as="song" t-key="song.id">
+    <p><t t-out="song.name"/></p>
+    <button t-att-value="song.url" id="play-btn" t-on-click="playSong">Play</button>
+    <button t-att-value="song.url" id="rmv-btn" t-on-click="removeSongFromPlaylist">Remove</button>
+    
+    </t>
+    </div>
+    </t>
+    </t>
+    </div>
+    `;
+    // obj=new Musiclist()
+    removeSongFromPlaylist(ev){
+        if(audio){
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        const selectedremoveUrl = ev.target.value;
+        const selectedRemove = this.props.playData.find(song => song.url === selectedremoveUrl);
+
+        console.log(selectedRemove)
+        // const selectedremoveVoice = this.props.playData.findIndex(song => song.url === selectedremoveUrl);
+        this.props.playData.splice(selectedRemove, 1)
+    }
+
+    playSong(ev){
+        if(audio){
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        const selectedAudioUrl = ev.target.value;
+        console.log(selectedAudioUrl)
+        const selectedAudio = this.props.playData.find(song => song.url === selectedAudioUrl);
+        console.log(selectedAudio)
+        document.getElementById('song-title').textContent = selectedAudio.name;
+        audio = new Audio(selectedAudioUrl);
+        // audio.pause();
+        // audio.currentTime = 0;
+        audio.play();
+
+    }
+// }
+//     static template=xml`<div id="Playlist" style="float:right">
+//                 <t t-esc="props.playData"/>
+//     </div>`;
+    static props=['playData']
+}
 class Musiclist extends Component{
     static template=xml`<Playlist playData="playData"/><div id="Musiclist" style="float:left">
     
@@ -76,10 +102,15 @@ class Musiclist extends Component{
             <button t-att-value="song.url" t-on-click="playSong">Play song</button>
         </t>
         </t>
-        <Player/>
     </div>`;
 
     playSong(ev){
+        if(audio){
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        console.log(this.playData)
+
         const selectedSongUrl=ev.target.getAttribute('value');
         const selectedSong=this.props.searchData[0].find(song=>song.url === selectedSongUrl);
         document.getElementById('song-title').textContent=selectedSong.name;
@@ -95,10 +126,12 @@ class Musiclist extends Component{
         // console.log("")
         const addedSongUrl=ev.target.getAttribute('value');
         const addedSong=this.props.searchData[0].find(song=>song.url === addedSongUrl);
-        this.playData.push(addedSong);
-        audio=new Audio(addedSongUrl);
-        audio.play()
-        // this.pl=selectedSong.name
+        if (! this.playData.includes(addedSong)){
+            // console.log(addedSong.name)
+            this.playData.push(addedSong);
+        }
+        // audio=new Audio(addedSongUrl); 
+       
         // console.log(this.pl)
     }
     static props=['searchData'];
@@ -119,11 +152,11 @@ class Search extends Component{
     async getMusic(){
         const findSong=document.getElementById("searchSong").value;
         const response= await fetch(`/music/search?song_name=${findSong}`) ;
-
         const {result:newData}=await response.json();
         // console.log(newData[0].id)
         this.searchData.pop();
         this.searchData.push(newData);
+
         // console.log(this.searchData)
     }
     static components={Musiclist}
@@ -133,8 +166,9 @@ class Root extends Component{
     <div>
     <Search/>
     </div>
+    <Player/>
     `;
-    static components={Search,Playlist};
+    static components={Search,Playlist,Player};
 }
 
 window.onload= function(){

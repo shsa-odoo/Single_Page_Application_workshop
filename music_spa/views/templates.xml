@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+        <template id="music_template">
+          <script type="text/javascript" src="/music_spa/static/owl.js"></script>
+          <script type="text/javascript" src="/music_spa/static/app.js"></script>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+body{
+    color:#faf7f7;
+    background:#333;
+  }
+  button{
+    margin:10px;
+    padding:10px;
+    font-size: 15px;
+    border-radius:5px;
+    background-color: #d6d6d6;
+  }
+  input{
+    margin:15px;
+    padding:10px;
+    font-size: 15px;
+  }
+  p{
+    padding:2px;
+    font-family:Calibri;
+    font-size:20px;
+  }

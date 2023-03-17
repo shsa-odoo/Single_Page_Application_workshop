@@ -18,7 +18,8 @@
     # for the full list
     'category': 'Uncategorized',
     'version': '0.1',
-
+    'application':True,
+    'installable':True,
     # any module necessary for this one to work correctly
     'depends': ['base'],
 
@@ -28,10 +29,9 @@
         'views/views.xml',
         'views/templates.xml',
     ],
+    
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-    'installable': True,
-    'application': True,
 }

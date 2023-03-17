@@ -1,9 +1,9 @@
-	<odoo>
+<odoo>
   <data>
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="music_player.list">
-      <field name="name">musicPlayer list</field>
+      <field name="name">MusicPlayer list</field>
       <field name="model">music_player.music_player</field>
       <field name="arch" type="xml">
         <tree>
@@ -18,7 +18,7 @@
     <!-- actions opening views on models -->
 <!--
     <record model="ir.actions.act_window" id="music_player.action_window">
-      <field name="name">musicPlayer window</field>
+      <field name="name">MusicPlayer window</field>
       <field name="res_model">music_player.music_player</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -27,7 +27,7 @@
     <!-- server action to the one above -->
 <!--
     <record model="ir.actions.server" id="music_player.action_server">
-      <field name="name">musicPlayer server</field>
+      <field name="name">MusicPlayer server</field>
       <field name="model_id" ref="model_music_player_music_player"/>
       <field name="state">code</field>
       <field name="code">
@@ -42,7 +42,7 @@
 
     <!-- Top menu item -->
 <!--
-    <menuitem name="musicPlayer" id="music_player.menu_root"/>
+    <menuitem name="MusicPlayer" id="music_player.menu_root"/>
 -->
     <!-- menu categories -->
 <!--

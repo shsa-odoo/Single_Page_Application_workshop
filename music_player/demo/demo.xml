@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record model="music_player.music_player" id="song1">
+    <data>
+
+          <record model="music_player.music_player" id="song1">
     <field name="name">Akon-Be-With-You</field>
     <field name="filename">Akon-Be-With-You.mp3</field>
   </record>
@@ -33,4 +34,6 @@
       <field name="name">Temp-song-3</field>
       <field name="filename">Temp-song-3.mp3</field>
     </record>
+
+    </data>
 </odoo>
